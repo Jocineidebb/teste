@@ -9,21 +9,21 @@ import io.jooby.MockRouter;
 import io.jooby.StatusCode;
 import io.jooby.exception.BadRequestException;
 
-public class RaizTest {
+public class DivisaoTest {
     @Test
-    public void raiz() {
+    public void Div() {
         MockRouter router = new MockRouter(new App());
-        router.get("/raiz/16", rsp -> {
-            assertEquals(4.0, rsp.value());
+        router.get("/div/16/2", rsp -> {
+            assertEquals(8.0, rsp.value());
             assertEquals(StatusCode.OK, rsp.getStatusCode());
         });
     }
 
     @Test
-    public void raiz_operadorString() {
+    public void divisao_operadorString() {
         MockRouter router = new MockRouter(new App());
         assertThrows(BadRequestException.class, () ->{
-            router.get("/raiz/aa", rsp -> {});
+            router.get("/div/aa", rsp -> {});
         });
     }
 }
